@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -20,11 +22,14 @@ public class UserServiceImpl implements UserService {
     public void addUser(UserRequest userRequest) {
 
         UserEntity userEntity = UserEntity.builder()
-                .name(userRequest.getName())
+                .firstName(userRequest.getFirstName())
+                .lastName(userRequest.getLastName())
                 .email(userRequest.getEmail())
                 .username("user_dev")
                 .password(encoder.encode(userRequest.getPassword()))
                 .role(RoleCategory.ADMIN)
+                .creationDate(LocalDateTime.now())
+                .modifiedDate(LocalDateTime.now())
                 .enabled(Boolean.TRUE)
                 .build();
 

@@ -1,4 +1,4 @@
-package com.pe.relari.security.service;
+package com.pe.relari.security.model.domain;
 
 import com.pe.relari.security.model.entity.UserEntity;
 import org.springframework.security.core.GrantedAuthority;
@@ -15,7 +15,7 @@ public class UserInfoDetails implements UserDetails {
     private final String role;
 
     public UserInfoDetails(UserEntity userEntity) {
-        this.username = userEntity.getName();
+        this.username = userEntity.getUsername();
         this.password = userEntity.getPassword();
         this.role = userEntity.getRole().name();
     }

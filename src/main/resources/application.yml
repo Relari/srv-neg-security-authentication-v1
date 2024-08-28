@@ -32,3 +32,5 @@ eureka:
 application:
   api:
     path: /srv/neg/v1/security-authentication
+  secret:
+    key: ''

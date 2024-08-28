@@ -1,7 +1,7 @@
 package com.pe.relari.config;
 
 import com.pe.relari.security.repository.UserRepository;
-import com.pe.relari.security.service.UserInfoDetails;
+import com.pe.relari.security.model.domain.UserInfoDetails;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
