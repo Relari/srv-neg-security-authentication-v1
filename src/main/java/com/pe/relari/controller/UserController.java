@@ -4,7 +4,9 @@ import com.pe.relari.security.model.api.UserRequest;
 import com.pe.relari.security.model.api.UserResponse;
 import com.pe.relari.security.service.JwtService;
 import com.pe.relari.security.service.UserService;
+import com.pe.relari.security.util.Utility;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,9 +30,16 @@ public class UserController {
     @GetMapping
     public ResponseEntity<UserResponse> extractUser(
             @RequestHeader(name = "Authorization") String token) {
+
+        String value = Utility.getTokenFromHeader(token);
+
+        if (value == null) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
+
         return ResponseEntity.ok(
                 new UserResponse(
-                        jwtService.extractUsername(token)
+                        jwtService.extractUsername(value)
                 )
         );
     }

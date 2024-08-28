@@ -1,6 +1,7 @@
 package com.pe.relari.security.filter;
 
 import com.pe.relari.security.service.JwtService;
+import com.pe.relari.security.util.Utility;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -60,11 +61,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private String getTokenFromRequest(HttpServletRequest request) {
         final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
-
-        if (StringUtils.hasText(authHeader) && authHeader.startsWith("Bearer ")) {
-            return authHeader.substring(7);
-        }
-        return null;
+        return Utility.getTokenFromHeader(authHeader);
     }
 
 }
