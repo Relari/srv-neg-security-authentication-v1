@@ -27,7 +27,7 @@ eureka:
     instance-id: ${spring.application.name}:@project.version@
   client:
     serviceUrl:
-      defaultZone: 'http://localhost:8090/eureka/'
+      defaultZone: 'http://localhost:8084/eureka/'
 
 application:
   api:

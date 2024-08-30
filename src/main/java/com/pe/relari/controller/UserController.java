@@ -27,7 +27,7 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping
+    @GetMapping(path = "/{id}/validate")
     public ResponseEntity<UserResponse> extractUser(
             @RequestHeader(name = "Authorization") String token) {
 

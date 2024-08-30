@@ -47,6 +47,7 @@ public class AuthServiceImpl implements AuthService {
     public ValidateResponse validateToken(String token) {
         var data = jwtService.validateToken(token);
         return new ValidateResponse(
+                data.getBody().getSubject(),
                 Utility.formatDate(data.getBody().getExpiration()),
                 Utility.validateDateExpiration(data.getBody().getExpiration())
         );
