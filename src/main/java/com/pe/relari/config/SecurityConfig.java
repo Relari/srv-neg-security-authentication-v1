@@ -36,7 +36,6 @@ public class SecurityConfig {
         return http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, path.concat("/users")).permitAll()
-                .antMatchers(HttpMethod.GET, path.concat("/users")).permitAll()
                 .antMatchers(HttpMethod.POST, path.concat("/validate")).permitAll()
                 .antMatchers(HttpMethod.POST, path.concat("/generate")).permitAll()
                 .anyRequest().authenticated()
